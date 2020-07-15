@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "651251626397",
+    "firebase_url": "https://olx-application-cf5fd.firebaseio.com",
+    "project_id": "olx-application-cf5fd",
+    "storage_bucket": "olx-application-cf5fd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:651251626397:android:59935e8d7ae92b9ab6ff74",
+        "android_client_info": {
+          "package_name": "com.sofi.olxapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "651251626397-5mqilj54uco4i0odii516658jhjr5q1p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCMlBsNEE-BWJAK81WD-YdAzjamW9osFqk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "651251626397-5mqilj54uco4i0odii516658jhjr5q1p.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
