@@ -45,6 +45,7 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
     implementation 'androidx.navigation:navigation-fragment-ktx:2.3.0'
     implementation 'androidx.navigation:navigation-ui-ktx:2.3.0'
+    implementation 'com.google.firebase:firebase-database:19.3.1'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
@@ -52,7 +53,7 @@ dependencies {
     implementation 'com.google.android.gms:play-services-location:17.0.0'
     //firebase sigin
     implementation 'com.google.firebase:firebase-auth:19.3.2'
-    implementation 'com.google.android.gms:play-services-auth:18.0.0'
+    implementation 'com.google.android.gms:play-services-auth:18.1.0'
 
     //fblogin
     implementation 'com.facebook.android:facebook-android-sdk:5.15.3'
@@ -61,9 +62,9 @@ dependencies {
     implementation 'com.google.firebase:firebase-firestore:21.5.0'
 
     //firebase core
-    implementation 'com.google.firebase:firebase-core:17.2.1'
+    implementation 'com.google.firebase:firebase-core:17.4.4'
 
-   //firebase storage
+    //firebase storage
     implementation 'com.google.firebase:firebase-storage:19.1.1'
 
     //circular image view
@@ -72,4 +73,10 @@ dependencies {
     //glide
     implementation 'com.github.bumptech.glide:glide:4.11.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
+
+
+    //media picker
+    implementation 'net.alhazmy13.MediaPicker:libary:2.4.4'
+
+    implementation 'com.github.hkk595:Resizer:v1.5'
 }

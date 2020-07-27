@@ -1,4 +1,4 @@
-package com.sofi.olxapplication.ui.myAds.Adapter
+package com.sofi.olxapplication.ui.myAds.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -12,16 +12,16 @@ import com.sofi.olxapplication.R
 import com.sofi.olxapplication.model.DataItemModel
 import java.text.SimpleDateFormat
 
-class adapter(
+class MyAdsAdapter(
     var dataItemModel : MutableList<DataItemModel>,
     var mClickListener : ItemClickListener)
 
-    :RecyclerView.Adapter<adapter.ViewHolder>() {
+    :RecyclerView.Adapter<MyAdsAdapter.ViewHolder>() {
     private lateinit var context: Context
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): adapter.ViewHolder {
+    ): MyAdsAdapter.ViewHolder {
         context = parent.context
         val viewHolder =
             LayoutInflater.from(parent.context).inflate(R.layout.adapter_my_ads, parent, false)
@@ -43,6 +43,7 @@ class adapter(
         val formattedDate = sdf.format(dataItemModel[position].createdDate?.time!!)
         holder.TextViewDate.setText(formattedDate)
         holder.itemView.setOnClickListener(View.OnClickListener {
+            mClickListener.OnItemClick(position)
             mClickListener.OnItemClick(position)
         })
     }

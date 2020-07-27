@@ -52,5 +52,7 @@ class CategoriesAdapter(var categoriesList:MutableList<CategoriesModel>,
        }
     interface IemClickListener{
         fun OnItemClick(position: Int)
+        {
+        }
     }
 }

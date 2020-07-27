@@ -4,16 +4,16 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.google.firebase.firestore.FirebaseFirestore
+import com.sofi.olxapplication.BaseFragment
 import com.sofi.olxapplication.R
 import com.sofi.olxapplication.model.CategoriesModel
-import com.sofi.olxapplication.ui.home.adapter.CategoriesAdapter
 import com.sofi.olxapplication.ui.sell.Adapter.SellAdapter
 import kotlinx.android.synthetic.main.fragment_sell.*
 
-class SellFragment : Fragment(), CategoriesAdapter.IemClickListener, SellAdapter.IemClickListener {
+class SellFragment : BaseFragment(),SellAdapter.IemClickListener {
     val db= FirebaseFirestore.getInstance()
     private lateinit var categoriesModel: MutableList<CategoriesModel>
     override fun onCreateView(
@@ -31,7 +31,9 @@ class SellFragment : Fragment(), CategoriesAdapter.IemClickListener, SellAdapter
     }
 
     private fun getCategoryList() {
+        showProgressBar()
         db.collection("Categories").get().addOnSuccessListener {
+            hideProgressBar()
              categoriesModel = it.toObjects(CategoriesModel::class.java)
             setAdapter()
         }
@@ -46,6 +48,9 @@ class SellFragment : Fragment(), CategoriesAdapter.IemClickListener, SellAdapter
     }
 
     override fun OnItemClick(position: Int) {
+        val bundle = Bundle()
+        bundle.putString("key", categoriesModel.get(position).key)
+        findNavController().navigate(R.id.action_sell_to_include_details, bundle)
 
 
     }

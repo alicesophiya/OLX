@@ -6,10 +6,10 @@ import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.google.firebase.firestore.FirebaseFirestore
+import com.sofi.olxapplication.BaseFragment
 import com.sofi.olxapplication.R
 import com.sofi.olxapplication.model.CategoriesModel
 import com.sofi.olxapplication.ui.home.adapter.CategoriesAdapter
@@ -17,7 +17,7 @@ import com.sofi.olxapplication.utilities.Constants
 import com.sofi.olxapplication.utilities.SharedPref
 import kotlinx.android.synthetic.main.fragment_home.*
 
-class HomeFragment : Fragment(), CategoriesAdapter.IemClickListener {
+class HomeFragment : BaseFragment(), CategoriesAdapter.IemClickListener {
 
     private lateinit var categoriesAdapter: CategoriesAdapter
     val db= FirebaseFirestore.getInstance()
@@ -72,7 +72,9 @@ private lateinit var categoriesModel: MutableList<CategoriesModel>
 
 
     private fun getCategoryList() {
+        showProgressBar()
         db.collection("Categories").get().addOnSuccessListener {
+            hideProgressBar()
            categoriesModel = it.toObjects(CategoriesModel::class.java)
             setAdapter()
         }
@@ -87,6 +89,9 @@ private lateinit var categoriesModel: MutableList<CategoriesModel>
     }
 
     override fun OnItemClick(position: Int) {
-        Toast.makeText(context,"Hey"+position,Toast.LENGTH_SHORT).show()
+       val bundle = Bundle()
+        bundle.putString(Constants.KEY,categoriesModel.get(position).key)
+       findNavController().navigate(R.id.action_home_to_browse,bundle)
+
     }
 }

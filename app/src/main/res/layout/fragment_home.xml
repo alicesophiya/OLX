@@ -64,16 +64,15 @@
         android:padding="@dimen/dp_4"
         android:src="@drawable/ic_search"></ImageView>
 
-    <androidx.appcompat.widget.AppCompatEditText
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:singleLine="true"
-        android:id="@+id/edSearch"
-        android:background="@null"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        android:hint="@string/find_cars">
-    </androidx.appcompat.widget.AppCompatEditText>
-        </LinearLayout>
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/edSearch"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@null"
+            android:hint="@string/find_cars"
+            android:singleLine="true"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"></androidx.appcompat.widget.AppCompatEditText>
+    </LinearLayout>
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"

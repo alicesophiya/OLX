@@ -1,4 +1,4 @@
-package com.sofi.olxapplication.ui.myAds.adapter
+package com.sofi.olxapplication.ui.browseCategory.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -12,16 +12,16 @@ import com.sofi.olxapplication.R
 import com.sofi.olxapplication.model.DataItemModel
 import java.text.SimpleDateFormat
 
-class MyAdsAdapter(
+class BrowseCategoryAdapter(
     var dataItemModel : MutableList<DataItemModel>,
     var mClickListener : ItemClickListener)
 
-    :RecyclerView.Adapter<MyAdsAdapter.ViewHolder>() {
+    :RecyclerView.Adapter<BrowseCategoryAdapter.ViewHolder>() {
     private lateinit var context: Context
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): MyAdsAdapter.ViewHolder {
+    ): BrowseCategoryAdapter.ViewHolder {
         context = parent.context
         val viewHolder =
             LayoutInflater.from(parent.context).inflate(R.layout.adapter_my_ads, parent, false)
@@ -64,4 +64,10 @@ class MyAdsAdapter(
         fun OnItemClick(position: Int)
     }
 
+
+    fun updateList(temp: MutableList<DataItemModel>) {
+        dataItemModel = temp
+        notifyDataSetChanged()
+
+    }
 }
