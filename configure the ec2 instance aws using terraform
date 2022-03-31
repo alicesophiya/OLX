@@ -1,0 +1,75 @@
+how to do the connection from ec2 to your localmachince
+
+- open the ec2dashboard
+- create an ec2 instance
+- while creating an instance .pem file will be downloaded save the file
+- click your instance and select connect instance
+- select the ssh client and futher steps will be displayed there
+-open an SSH client.
+-Locate your private key file in the present working place. The key used to launch this instance is sofi.pem
+-Run this command, if necessary, to ensure your key is not publicly viewable.
+ #chmod 400 sofi.pem
+-Connect to your instance using its Public DNS:ec2-18-116-199-158.us-east-2.compute.amazonaws.com
+- Example:
+ #ssh -i "sofi.pem" ec2-user@ec2-18-116-199-158.us-east-2.compute.amazonaws.com
+
+
+
+how to create an instance in ec2 using terraform
+
+- install the terraform in your CLI
+- #curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
+- #sudo apt-add-repository "deb [arch=$(dpkg --print-architecture)] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
+-#sudo apt install terraform
+-after installing the terraform
+-open an aws account
+-select security on the top and go to access creditals option
+- create a access key and save the file. (Two keys are provided)
+- switch to the terminal
+-#cd ~
+#mkdir project-terraform
+#cd project-terraform
+# vim create_ec2.tf
+# vim aws.tf
+- to execte the file
+#terraform init
+#terraform plan
+#terraform apply
+it will ask to enter a value
+Enter a value: yes
+- to list the resources created by terraform
+#terraform state list
+
+
+
+How to push the code on github
+-Create a new repo with below name, make sure it is a private repo. Also do not click on initialize this repository with a README option.
+-Note down the remote url as highligted 
+-Note:
+-If you have any issues in uploading tf files, you may not have created ssh-keys and uploaded into GitHub. Create ssh keys using ssh-keygen command:
+
+ssh-keygen
+This should generate both public and private keys.
+Copy the public keys by executing the below command:
+sudo cat ~/.ssh/id_rsa.pub
+
+Initialize the directory first
+git init
+
+The above command will create local git repository.
+Now add terraform files.
+git add *.tf
+
+git commit -m "Added terraform files"
+Copy the below red highlighted url from above screenshots circled in red.
+git remote add origin your remote repo url per above screenshot
+
+Now push the code into GitHub
+git push -u origin master
+
+Now Login to GitHub to view the Terraform files
+
+You may get this error if you have not uploaded ssh keys into GitHub/BitBucket.
+
+
+referencelink: https://www.coachdevops.com/2021/07/how-to-create-ec2-instances-using.html
